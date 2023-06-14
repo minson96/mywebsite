@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>HTML 강의 정리 (2023.06.11 ~ 2023.06.12)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b9ec194b-3464-4d85-b22a-12226550c54d" class="page sans"><header><h1 class="page-title">HTML 강의 정리 (2023.06.11 ~ 2023.06.12)</h1><p class="page-description"></p></header><div class="page-body"><ul id="8991cd0e-cd43-4505-bfa2-c8e4d9712c5c" class="bulleted-list"><li style="list-style-type:disc">웹페이지에서 파일 불러오기</li></ul><p id="2c61eb40-223f-468f-a255-7bd776ae024c" class="">ctrl(command) + o</p><ul id="291b6efe-c45e-4030-9f70-2a80cbffee7e" class="bulleted-list"><li style="list-style-type:disc">저장</li></ul><p id="399a19c7-d25e-4215-a21c-daf57732fe07" class="">ctrl(command) + s</p><pre id="e82d24f0-b493-454a-be77-d3d7a75dc01a" class="code"><code>&lt;strong&gt;&lt;/strong&gt; =&gt; 글씨 강조(두껍게)
+&lt;u&gt;&lt;/u&gt; =&gt; underline 글씨 밑줄
+&lt;meta charset=&quot;utf-8&quot;&gt; =&gt; 한글이 깨질 경우 작성
+&lt;h1&gt;&lt;/h1&gt; 제목을 의미 하며 1에서 6으로 크기가 작아진다. 줄바꿈과 두껍게 글씨 강조가 적용된다.
+~
+&lt;h6&gt;&lt;/h6&gt;</code></pre><p id="876f8b16-829d-4c80-bdbe-7e4c3089765a" class="">html에서 사용하는 언어 사용 빈도를 알 수 있는 사이트</p><p id="29817dc0-7910-4063-a634-56f12e60ee82" class=""><a href="https://www.advancedwebranking.com/seo/html-study/">https://www.advancedwebranking.com/seo/html-study/</a></p><figure id="398a3fb0-b666-454d-882f-41b16551ff96" class="image"><a href="HTML%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20(2023%2006%2011%20~%202023%2006%2012)%20b9ec194b34644d85b22a12226550c54d/Untitled.png"><img style="width:868px" src="HTML%20%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%20%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20(2023%2006%2011%20~%202023%2006%2012)%20b9ec194b34644d85b22a12226550c54d/Untitled.png"/></a></figure><pre id="5debe7d5-0696-4aea-994c-79d77ca41de3" class="code"><code>&lt;br&gt; =&gt; 줄바꿈
+&lt;p&gt;&lt;/p&gt; =&gt; 단락을 의미하며 paragraph를 의미한다. 그리고 &lt;br&gt; 과 달리 정보로써 더 중요성을 의미한다.</code></pre><p id="4ff6d13b-15b8-4bc3-a711-7327f3d64f26" class="">사진을 무료로 가져와서 사용할 수 있는 사이트</p><p id="68597c6a-5404-4875-8ecb-16b9b5318f22" class=""><a href="https://unsplash.com/">https://unsplash.com/</a></p><pre id="0df35fdc-1709-48ec-b067-e40faa3a062a" class="code"><code>&lt;img src=&quot;경로&quot; width=&quot;길이나 %로 표현&quot;&gt; =&gt; 이미지를 넣을 수 있는 명령어로 
+src와 width는 attribute(속성을 의미한다.)
+&lt;ul&gt; unorderd list or &lt;ol&gt; ordered list 로 ordered list는 자동으로 순서를 매겨준다.
+		&lt;li&gt;&lt;/li&gt; =&gt; list 목록을 의미하며 &lt;ul&gt; 이나 &lt;ol&gt; 안에 존재해야 한다.
+&lt;/ul&gt; or &lt;/ol&gt;
+&lt;title&gt;&lt;/title&gt; =&gt; 페이지 제목을 의미한다.
+&lt;head&gt;&lt;/head&gt; =&gt; 본문 설명을 의미한다.
+&lt;body&gt;&lt;/body&gt; =&gt; 본문
+&lt;html&gt;&lt;/html&gt; =&gt; 최상단에 위치하는 태그이다.
+&lt;!doctype html&gt; =&gt; 관용적으로 사용되며 html로 작성되었다는 것을 말하기 위해 첫 줄에 작성한다.
+&lt;a href=&quot;사이트 경로&quot; title=&quot;경로 설명&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt; =&gt; anchor 닻이라는 의미로 
+hyper reference로 이동시킬 수 있다. 이때 target에서 blank는 새 탭에서 실행하는 것을 의미한다.</code></pre><p id="46202a0b-9343-433a-90cb-7b62b90f392d" class="">최종 정리 형태</p><pre id="f4585e98-6d0c-47be-ad05-6474ea0ed0e9" class="code"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;구글&lt;/title&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;&lt;a href=&quot;index.html&quot;&gt;구글&lt;/a&gt;&lt;/h1&gt;
+        &lt;ol&gt;
+            &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;구글&lt;/a&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;h2&gt;&lt;a href=&quot;https://www.google.com/&quot;
+            target=&quot;_blank&quot; title=&quot;구글 이동&quot;&gt;구글 이동&lt;/a&gt;&lt;/h2&gt;
+        &lt;p&gt;구글이다.&lt;/p&gt;
+        &lt;img src=&quot;1.jpg&quot; width=&quot;100%&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;&lt;u&gt;구글&lt;/u&gt;사이트이다.&lt;/strong&gt;&lt;br&gt;
+        1. 기름기를 없앤 갈빗살에 칼집을 &lt;br&gt;
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre><ul id="f646bfa7-2d9a-4c66-8e46-e03ba6f6b951" class="bulleted-list"><li style="list-style-type:disc">웹서버 호스팅하기 - git</li></ul><p id="26062ebc-5f9a-4fa8-87eb-2172647984ef" class="">파일을 git에 업로드하고 repository → setting → pages → branch (none을 main으로 변경)→ saves하고 action에서 완료를 기다렸다가  다시 pages에서 링크 확인하면 완성된다. </p><ul id="b452964a-b4da-4d03-8dee-10c5c215105e" class="bulleted-list"><li style="list-style-type:disc">vscode - Live server</li></ul><p id="c468b5fa-985b-430a-8c2d-0964ace0372c" class="">html파일을 실시간으로 호스팅해서 수정하면 바로 바로 적용되는 것을 확인할 수 있다.</p><ul id="110abffc-c421-4f7a-94f4-53a5fbcd2f34" class="bulleted-list"><li style="list-style-type:disc">vscode - Ip address</li></ul><p id="1a250cf9-ace1-4c6a-8e91-04bbadf8e54a" class="">vscode에서 현재 사용 중인  ip를 확인할 수 있다. (127.0.0.1은 자기 자신의 web server를 의미한다.)</p><p id="cfe8a74f-1af4-4981-9488-8bdbf3efbe82" class="">
+</p><p id="db821473-3d75-4c09-8b33-f2e596cc91bf" class="">이후 선택지는 </p><ul id="2f1a20dd-2f44-4520-8ef1-15d098560cca" class="bulleted-list"><li style="list-style-type:disc">css - web publisher, web designer</li></ul><ul id="e543eef7-ae0b-4a38-8c45-e7a42d7080cc" class="bulleted-list"><li style="list-style-type:disc">javascrypt - frontend engineer, interactive engineer</li></ul><ul id="8e71b3d8-55d5-49e6-9cd8-963e8d6fa173" class="bulleted-list"><li style="list-style-type:disc">JSP, PHP, Node.js - backend engineer</li></ul><p id="ab298e04-a936-4b6a-b14f-b2cafc00ea82" class="">
+</p><p id="80b9720c-a73a-4624-9e7a-376b4093764c" class="">부록</p><ul id="32059e90-8ccf-4375-89c8-ef61e93921f0" class="bulleted-list"><li style="list-style-type:disc">동영상 넣기</li></ul><pre id="2e775ad6-4589-41de-abf4-88a58a3a397a" class="code"><code>&lt;iframe&gt;&lt;/iframe&gt; =&gt; 동영상을 넣을 수 있는 명령어
+Youtube =&gt; 공유 =&gt; 퍼가기에서 코드 복사 후 넣으면 사용 가능</code></pre><ul id="15765578-237f-4f23-87d4-54d151719a26" class="bulleted-list"><li style="list-style-type:disc">댓글 기능 추가</li></ul><p id="3ee08bd0-7d01-4c8f-b9ed-34fc047d9239" class="">Disqus or LiveRe</p><ul id="15d87008-69bf-40ca-b775-61ddfb93d75b" class="bulleted-list"><li style="list-style-type:disc">채팅 기능 추가</li></ul><p id="d00eef94-640c-4140-87c0-3edc042e079f" class="">www.tawk.to</p><ul id="0bb0715b-7510-4392-8f2f-befd4ef009f6" class="bulleted-list"><li style="list-style-type:disc">방문자 분석기</li></ul><p id="2d535ba5-1371-40d4-b2cd-88db04a8e54d" class="">www.analystics.google.com</p></div></article></body></html>
