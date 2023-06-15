@@ -3,30 +3,49 @@
     <head>
         <title>Minson's repository</title>
         <meta charset="utf-8">
+        <style>
+            .js{
+                font-weight: bold;
+                color:red;
+            }
+            span{
+                color:blue;
+            }
+            #first{
+                color:yellow;
+            }
+        </style>
+        
     </head>
-    <body>
+    <body style="background-color:black;color:white;">
         <h1><a href="index.html" title="Home">Minson's repository</a></h1>
         <ol>
-            <li>HTML</li>
+            <li style="background-color:coral;color:powderblue;">HTML</li>
         </ol>
-        <div id="disqus_thread"></div>
         <script>
-            /**
-            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-            /*
-            var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            */
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://https-minson96-github-io-mywebsite.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
+            document.write('안녕하세요','<br>');
+            document.write('dsafsadf'.length,'<br>');
+            document.write('dsafsadf'.toUpperCase(),'<br>');
+            document.write('dsafsadf'.indexOf('o'),'<br>');
+            document.write('dsafsadf'.indexOf('d'),'<br>');
+            document.write('         dsafsadf       ','<br>');
+            document.write('         dsafsadf       '.trim(),'<br>');
+            var name='minson';
+            document.write("dsfafdsf "+name+" dsfadsfasd");
         </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <p>
+        <span style="font-weight:bold;">minson</span>'s 
+        <span class="js">repository</span>
+        </p>
+        <input type="button" value="day" onclick="
+        document.querySelector('body').style.backgroundColor='white'
+        document.querySelector('body').style.color='black'
+        ">
+        <input type="button" value="night" onclick="
+        document.querySelector('body').style.backgroundColor='black'
+        document.querySelector('body').style.color='white'
+        ">
+        <input type="text" onkeydown="alert('key down!')">
+        
     </body>
 </html>
